@@ -2,7 +2,8 @@
 
 ## Stylos: Multi-View 3D Stylization with Single-Forward Gaussian Splatting
 
-[![arXiv](https://img.shields.io/badge/arXiv-2509.26455-b31b1b.svg)](https://arxiv.org/abs/2509.26455)  
+[![arXiv](https://img.shields.io/badge/arXiv-2509.26455-b31b1b.svg)](https://arxiv.org/abs/2509.26455)  <a href="https://hanzhouliu.github.io/StylOS"><img src="https://img.shields.io/badge/Project_Page-green" alt="Project Page"></a>
+
 
 *<a href="https://hanzhouliu.github.io/">Hanzhou Liu</a>\*, 
 <a href="https://scholar.google.com/citations?user=5F41hjgAAAAJ&hl=en">Jia Huang</a>, 
