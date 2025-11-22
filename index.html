@@ -11,13 +11,21 @@
      <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
      <link href="./stylos_files/css2" rel="stylesheet">
      <style>
-         :root {
+         /* :root {
              --background-color: #0a0a0a;
              --text-color: #cccccc;
              --heading-color: #ffffff;
-             --accent-color: #2563eb; /* Kept for potential future use, but not used for buttons now */
+             --accent-color: #2563eb; 
              --container-width: 1100px;
-         }
+         } */
+        :root {
+            --background-color: #ffffff;
+            --text-color: #444444;
+            --heading-color: #111111;
+            --accent-color: #007aff; 
+            --container-width: 1100px;
+        }
+
 
          body {
              background-color: var(--background-color);
@@ -95,7 +103,7 @@
 
          .links a {
              background-color: #1a1a1a;
-             color: var(--heading-color);
+             color: #ffffff !important;
              text-decoration: none;
              border: 1px solid #333;
              padding: 12px 24px;
@@ -659,6 +667,7 @@
      </header>
 
      <main>
+        </br>
          <section class="teaser">
              <video class="teaser-video" autoplay loop playsinline controls preload="auto">
                  <source src="./videos/Stylos_demo2_2min.mp4" type="video/mp4">
@@ -856,135 +865,59 @@
     </div>
   </div>
 </div>
+<br>
+<h3>Multi-Style Blending and Stylization Control</h3>
+<div class="gallery"  style="display: flex; justify-content: center; flex-wrap: wrap; gap: 25px;">
+    <!-- Item 1 -->
+    <div class="gallery-item" style="flex:1 1 300px; max-width:300px;">
+        <video autoplay muted loop playsinline>
+            <source src="./videos/interpolation/24_977_linear.mp4" type="video/mp4">
+        </video>
 
-         
+    <div class="thumbnail-row" style="display:flex;justify-content:center;gap:10px;margin-top:10px;">
+      <div class="thumb">
+        <img src="./videos/interpolation/24.png" style="width:80px;height:80px;border-radius:6px;cursor:pointer;">
+      </div>
+      <div class="thumb">
+        <img src="./videos/interpolation/977.png" style="width:80px;height:80px;border-radius:6px;cursor:pointer;">
+      </div>
+    </div>
+    </div>
 
-         <!-- </section>
+    <!-- Item 2 -->
+    <div class="gallery-item" style="flex:1 1 300px; max-width:300px;">
+        <video autoplay muted loop playsinline>
+            <source src="./videos/interpolation/00011395_23_linear.mp4" type="video/mp4">
+        </video>
 
-        
+    <div class="thumbnail-row" style="display:flex;justify-content:center;gap:10px;margin-top:10px;">
+      <div class="thumb">
+        <img src="./videos/interpolation/00011395.png" style="width:80px;height:80px;border-radius:6px;cursor:pointer;">
+      </div>
+      <div class="thumb">
+        <img src="./videos/interpolation/23.png" style="width:80px;height:80px;border-radius:6px;cursor:pointer;">
+      </div>
+    </div>
+    </div>
 
-         <section id="gallery">
-         <h2>Stylized Video Generation</h2>
-         <div class="gallery">
-             <div class="gallery-item">
-                 <video autoplay="" muted="" loop="" playsinline="" poster="https://via.placeholder.com/500x300.png/000000?text=Generated+Video+1">
-                     <source src="./videos/gen/style/gen1.mp4" type="video/mp4">
-                 </video>
-                 <div class="prompt">
-                    <b>Prompt:</b> "Songbirds splashing and flapping in a birdbath."
-                    <div style="display:flex;align-items:center;margin-top:6px;">
-                        <b style="margin-right:8px;">Style:</b>
-                        <img src="./videos/gen/imgs/style1.jpg" style="width:80px;border-radius:6px;">
-                    </div>
-                    </div>
-             </div>
-             <div class="gallery-item">
-                 <video autoplay="" muted="" loop="" playsinline="" poster="https://via.placeholder.com/500x300.png/000000?text=Generated+Video+1">
-                     <source src="./videos/gen/style/gen2.mp4" type="video/mp4">
-                 </video>
-                 <div class="prompt">
-                    <b>Prompt:</b> "A child riding a bicycle down a suburban street with training wheels."
-                    <div style="display:flex;align-items:center;margin-top:6px;">
-                        <b style="margin-right:8px;">Style:</b>
-                        <img src="./videos/gen/imgs/style2.jpeg" style="width:80px;border-radius:6px;">
-                    </div>
-                    </div>
-             </div>
-             <div class="gallery-item">
-                 <video autoplay="" muted="" loop="" playsinline="" poster="https://via.placeholder.com/500x300.png/000000?text=Generated+Video+1">
-                     <source src="./videos/gen/style/gen3.mp4" type="video/mp4">
-                 </video>
-                 <div class="prompt">
-                    <b>Prompt:</b> "A waterfall splashing into a rocky pool surrounded by mossy cliffs."
-                    <div style="display:flex;align-items:center;margin-top:6px;">
-                        <b style="margin-right:8px;">Style:</b>
-                        <img src="./videos/gen/imgs/style3.jpg" style="width:80px;border-radius:6px;">
-                    </div>
-                    </div>
-             </div>
-         </div>
+    <!-- Item 3 -->
+    <div class="gallery-item" style="flex:1 1 300px; max-width:300px;">
+        <video autoplay muted loop playsinline>
+            <source src="./videos/interpolation/original_201_linear.mp4" type="video/mp4">
+        </video>
 
-         <div class="gallery">
-             <div class="gallery-item">
-                 <video autoplay="" muted="" loop="" playsinline="" poster="https://via.placeholder.com/500x300.png/000000?text=Generated+Video+1">
-                     <source src="./videos/gen/style/gen4.mp4" type="video/mp4">
-                 </video>
-                 <div class="prompt">
-                    <b>Prompt:</b> "A golden retriever running through a grassy field on a windy day."
-                    <div style="display:flex;align-items:center;margin-top:6px;">
-                        <b style="margin-right:8px;">Style:</b>
-                        <img src="./videos/gen/imgs/style4.jpg" style="width:80px;border-radius:6px;">
-                    </div>
-                    </div>
-             </div>
-             <div class="gallery-item">
-                 <video autoplay="" muted="" loop="" playsinline="" poster="https://via.placeholder.com/500x300.png/000000?text=Generated+Video+1">
-                     <source src="./videos/gen/style/gen5.mp4" type="video/mp4">
-                 </video>
-                 <div class="prompt">
-                    <b>Prompt:</b> "Meadow flowers nodding gently in the wind."
-                    <div style="display:flex;align-items:center;margin-top:6px;">
-                        <b style="margin-right:8px;">Style:</b>
-                        <img src="./videos/gen/imgs/style5.jpg" style="width:80px;border-radius:6px;">
-                    </div>
-                    </div>
-             </div>
-             <div class="gallery-item">
-                 <video autoplay="" muted="" loop="" playsinline="" poster="https://via.placeholder.com/500x300.png/000000?text=Generated+Video+1">
-                     <source src="./videos/gen/style/gen666.mp4" type="video/mp4">
-                 </video>
-                 <div class="prompt">
-                    <b>Prompt:</b> "Smoke slowly rising from a chimney in a silent mountain village."
-                    <div style="display:flex;align-items:center;margin-top:6px;">
-                        <b style="margin-right:8px;">Style:</b>
-                        <img src="./videos/gen/imgs/style6.jpg" style="width:80px;border-radius:6px;">
-                    </div>
-                    </div>
-             </div>
-         </div>
+    <div class="thumbnail-row" style="display:flex;justify-content:center;gap:10px;margin-top:10px;">
+      <div class="thumb">
+        <img src="./videos/interpolation/DSC07956.JPG" style="width:80px;height:80px;border-radius:6px;cursor:pointer;">
+      </div>
+      <div class="thumb">
+        <img src="./videos/interpolation/201.png" style="width:80px;height:80px;border-radius:6px;cursor:pointer;">
+      </div>
+    </div>
+    </div>
 
-         <div class="gallery">
-             <div class="gallery-item">
-                 <video autoplay="" muted="" loop="" playsinline="" poster="https://via.placeholder.com/500x300.png/000000?text=Generated+Video+1">
-                     <source src="./videos/gen/style/gen7.mp4" type="video/mp4">
-                 </video>
-                 <div class="prompt">
-                    <b>Prompt:</b> "A woman is vacuuming the living room floor."
-                    <div style="display:flex;align-items:center;margin-top:6px;">
-                        <b style="margin-right:8px;">Style:</b>
-                        <img src="./videos/gen/imgs/style7.jpg" style="width:80px;border-radius:6px;">
-                    </div>
-                    </div>
-             </div>
-             <div class="gallery-item">
-                 <video autoplay="" muted="" loop="" playsinline="" poster="https://via.placeholder.com/500x300.png/000000?text=Generated+Video+1">
-                     <source src="./videos/gen/style/gen8.mp4" type="video/mp4">
-                 </video>
-                 <div class="prompt">
-                    <b>Prompt:</b> "A lone rider gallops across an open, sandy plain under a clear blue sky."
-                    <div style="display:flex;align-items:center;margin-top:6px;">
-                        <b style="margin-right:8px;">Style:</b>
-                        <img src="./videos/gen/imgs/style8.jpg" style="width:80px;border-radius:6px;">
-                    </div>
-                    </div>
-             </div>
-             <div class="gallery-item">
-                 <video autoplay="" muted="" loop="" playsinline="" poster="https://via.placeholder.com/500x300.png/000000?text=Generated+Video+1">
-                     <source src="./videos/gen/style/gen9.mp4" type="video/mp4">
-                 </video>
-                 <div class="prompt">
-                    <b>Prompt:</b> "A group of kids drawing on the sidewalk with colorful chalk."
-                    <div style="display:flex;align-items:center;margin-top:6px;">
-                        <b style="margin-right:8px;">Style:</b>
-                        <img src="./videos/gen/imgs/style9.jpg" style="width:80px;border-radius:6px;">
-                    </div>
-                    </div>
-             </div>
-         </div>
-         </section> -->
-
-
-
+</div>
+<br>
          <section id="method">
              <h2>Methodology</h2>
               <p>
@@ -1006,9 +939,6 @@
                   enabling faithful reconstruction of the observed scene while transferring the desired style. A key component is the 3D style loss, matching voxelized 3D features with 2D style statistics. </span>
            </div>
          </section>
-
-
-  
         <section id="citation">
              <h2>Citation</h2>
              <p>If you find our work useful for your research, please consider citing our paper:</p>
