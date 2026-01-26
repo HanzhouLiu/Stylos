@@ -2,7 +2,7 @@
 
 ## Stylos: Multi-View 3D Stylization with Single-Forward Gaussian Splatting
 
-[![arXiv](https://img.shields.io/badge/arXiv-2509.26455-b31b1b.svg)](https://arxiv.org/abs/2509.26455)  <a href="https://hanzhouliu.github.io/StylOS"><img src="https://img.shields.io/badge/Project_Page-green" alt="Project Page"></a>
+[![arXiv](https://img.shields.io/badge/arXiv-2509.26455-b31b1b.svg)](https://arxiv.org/abs/2509.26455) <a href="https://hanzhouliu.github.io/StylOS"><img src="https://img.shields.io/badge/Project_Page-green" alt="Project Page"></a> <a href="https://huggingface.co/spaces/HanzhouLiu/Stylos_Gradio"> <img src="https://img.shields.io/badge/🤗%20HuggingFace-Space-yellow"> </a>
 
 
 *<a href="https://hanzhouliu.github.io/">Hanzhou Liu</a>\*, 
@@ -27,9 +27,21 @@
 }
 ```
 
----
+## 🚀 Timeline & TODO
+The complete codebase will be **fully released soon**. We appreciate your patience and interest. Thanks for your attention and support! 
 
-📢 The complete codebase will be **fully released soon**. We appreciate your patience and interest. Thanks for your attention and support!  
+- [x] **Sep 2025** — Paper available on **arXiv**
+- [x] **Jan 2026** — Paper accepted by **ICLR 2026**
+- [x] **Feb 2026** — Hugging Face demo released
+
+- [ ] — Release inference pipeline
+- [ ] — Release full training code
+- [ ] — Add multi-view stylization demo
+- [ ] — Upload Hugging Face model
+- [ ] — Release Hugging Face Space demo
+- [ ] — Clean and document codebase
+
+---
 
 ⭐ If you find this project useful, please **give us a star** to help more people discover it.  
 👀 You can also **watch the repository** (top-right corner) to stay updated on new features, papers, and releases.  
