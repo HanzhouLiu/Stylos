@@ -35,11 +35,8 @@ The complete codebase will be **fully released soon**. We appreciate your patien
 - [x] **Feb 2026** — Hugging Face demo released
 
 - [ ] — Release inference pipeline
+- [ ] — Release environment setup instructions
 - [ ] — Release full training code
-- [ ] — Add multi-view stylization demo
-- [ ] — Upload Hugging Face model
-- [ ] — Release Hugging Face Space demo
-- [ ] — Clean and document codebase
 
 ---
 
