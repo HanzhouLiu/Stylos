@@ -566,7 +566,69 @@
             margin-bottom: 18px;
             font-size: 1.3rem;
         }
-        
+
+        #citation {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        #citation h3 {
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        #citation pre {
+            background-color: #f5f5f5;
+            color: #444;
+            border-radius: 6px;
+            padding: 18px 20px;
+            font-size: 14px;
+            line-height: 1.5;
+            overflow-x: auto;
+            text-align: left;
+        }
+
+        #acknowledgements {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        #acknowledgements h3 {
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        #related-work {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        #related-work ul {
+            padding-left: 20px;
+        }
+
+        #related-work li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        #related-work h3 {
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        #related-work a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+
+        #related-work a:hover {
+            text-decoration: underline;
+        }
+
         .user-study-chart-area {
             display: flex;
             align-items: stretch;
@@ -696,7 +758,7 @@
          </section>
 
          <section id="gallery">
-             <h2>3D Stylization</h2>
+             <h3>3D Stylization</h3>
              <p style="text-align: center;">Demos for llff dataset</p>
              <div class="gallery">
                  <div class="gallery-item" data-tag-top="Reconstruction" data-tag-bottom="Stylization">
@@ -937,7 +999,7 @@
 </div>
 <br>
          <section id="method">
-             <h2>Methodology</h2>
+             <h3>Methodology</h3>
               <p>
                  Stylos introduces a single-forward 3D Gaussian framework for geometry-aware, view-consistent 3D stylization. 
              </p>
@@ -958,7 +1020,7 @@
            </div>
          </section>
         <section id="citation">
-             <h2>Citation</h2>
+             <h3>BibTeX</h3>
              <p>If you find our work useful for your research, please consider citing our paper:</p>
              <pre>@article{liu2025stylos,
 title={Stylos: Multi-View 3D Stylization with Single-Forward Gaussian Splatting},
@@ -968,8 +1030,39 @@ year={2025}
 }
              </pre>
          </section>
+        
+        <section id="acknowledgements">
+            <h3>Acknowledgements</h3>
+            We sincerely thank
+            <a href="https://xujiacong.github.io/">Jiacong Xu</a>
+            for helping us develop the demo website.
+            This template is modified based on
+            <a href="https://xujiacong.github.io/FreeViS/">FreeViS</a>.
+        </section>
 
-         <h4>This template is modified based on <a href="https://xujiacong.github.io/FreeViS/">FreeViS.</a></h4>
+        <section id="related-work">
+            <h3>Related Work</h3>
+
+            <ul class="related-list">
+                <li>
+                    <a href="https://github.com/facebookresearch/vggt">
+                        [CVPR 2025] VGGT: Visual Geometry Grounded Transformer
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://github.com/InternRobotics/AnySplat">
+                        [SIGGRAPH Asia 2025] AnySplat: Feed-forward 3D Gaussian Splatting from Unconstrained Views
+                    </a>
+                </li>
+
+                <li>
+                    <a href="https://github.com/WU-CVGL/Styl3R">
+                        [NeurIPS 2025] Styl3R: Instant 3D Stylized Reconstruction for Arbitrary Scenes and Styles
+                    </a>
+                </li>
+            </ul>
+        </section>
 
      </main>
  </div>
