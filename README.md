@@ -48,13 +48,10 @@ If you have any question, feel free to leave an issue or email Hanzhou Liu @ han
 
 ## Citation
 ```bibtex
-@misc{liu2025stylosmultiview3dstylization,
-      title={Stylos: Multi-View 3D Stylization with Single-Forward Gaussian Splatting}, 
-      author={Hanzhou Liu and Jia Huang and Mi Lu and Srikanth Saripalli and Peng Jiang},
-      year={2025},
-      eprint={2509.26455},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2509.26455}, 
+@article{liu2025stylos,
+  title={Stylos: Multi-View 3D Stylization with Single-Forward Gaussian Splatting},
+  author={Liu, Hanzhou and Huang, Jia and Lu, Mi and Saripalli, Srikanth and Jiang, Peng},
+  journal={arXiv preprint arXiv:2509.26455},
+  year={2025}
 }
 ```
