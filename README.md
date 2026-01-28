@@ -2,7 +2,7 @@
 
 ## Stylos: Multi-View 3D Stylization with Single-Forward Gaussian Splatting
 
-[![arXiv](https://img.shields.io/badge/arXiv-2509.26455-b31b1b.svg?style=flat-square)](https://arxiv.org/abs/2509.26455) <a href="https://hanzhouliu.github.io/StylOS"><img src="https://img.shields.io/badge/Project_Page-green?style=flat-square" alt="Project Page"></a> <a href="https://huggingface.co/spaces/HanzhouLiu/Stylos_Gradio"> <img src="https://img.shields.io/badge/🤗%20HuggingFace-Space-yellow?style=flat-square"> </a>
+[![arXiv](https://img.shields.io/badge/arXiv-2509.26455-b31b1b.svg?style=flat-square)](https://arxiv.org/abs/2509.26455) <a href="https://hanzhouliu.github.io/Stylos"><img src="https://img.shields.io/badge/Project_Page-green?style=flat-square" alt="Project Page"></a> <a href="https://huggingface.co/spaces/HanzhouLiu/Stylos_Gradio"> <img src="https://img.shields.io/badge/🤗%20HuggingFace-Space-yellow?style=flat-square"> </a>
 
 
 *<a href="https://hanzhouliu.github.io/">Hanzhou Liu</a>\*, 
