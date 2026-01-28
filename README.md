@@ -19,7 +19,7 @@
 
 For fast testing and inference only, please switch to:
 
-👉 **[`quick_inference` branch](https://github.com/hanzhouliu/StylOS/tree/quick_inference)**
+👉 **[`quick_inference`](https://github.com/hanzhouliu/StylOS/tree/quick_inference)**
 
 This branch contains:
 - Minimal dependencies
