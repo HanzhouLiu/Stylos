@@ -15,13 +15,31 @@
 
 </div>
 
-## 1. Environment Installation
-`requirements.txt` contains the minimum required packages to train and inference Stylos.
+## Table of Contents
 
-## 2. Dataset Preparation
+- [Overview](#overview)
+- [Full Instructions](#full-instructions)
+  - [Environment Setup](#environment-setup)
+  - [Dataset Preparation](#dataset-preparation)
+    - [CO3D Dataset](#co3d-dataset)
+    - [DL3DV Dataset](#dl3dv-dataset)
+  - [Inference and Evaluation](#inference-and-evaluation)
+- [Quick Inference](#quick-inference)
+
+## Overview
+**TL;DR.** Stylos a single-forward 3D Gaussian framework for 3D style transfer that operates on unposed content, from a single image to a multi-view collection, conditioned on a separate reference style image.
+
+## Full Instructions
+### 1. Environment Setup
+`requirements.txt` contains the minimum required packages to train and inference Stylos, which can be installed by running,
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Dataset Preparation
 You might want to change the dataset location in the following config files, `config/dataset/co3d.yaml`, `config/dataset/dl3dv.yaml`, and `config/dataset/dl3dv960.yaml`
 
-#### 2.1 CO3D Dataset
+#### 2.1. CO3D Dataset
 To download the CO3D dataset, run the following command,
 ```bash
 bash scripts/sh_files/datasets/download_co3d.sh
@@ -32,10 +50,10 @@ python3 -m scripts.python_files.co3d_dataset_preprocess --co3d_root datasets/CO3
 ```
 Note: Since Stylos is based on Anysplat and VGGT, it does not depend on the provided image poses.
 
-#### 2.2 DL3DV Dataset
+#### 2.2. DL3DV Dataset
 Please download the [DL3DV](https://github.com/DL3DV-10K/Dataset) dataset on their official website.
 
-## Training Instructions
+### 3. Training
 We first train Stylos on the DL3DV dataset with Jittor color augmentations to learn geometry-related knowledge.
 ```bash
 python src/main.py +experiment=dl3dv_geo trainer.num_nodes=1
@@ -45,6 +63,26 @@ After that, we load the pre-trained Stylos weights obtained from the previous st
 python src/main.py +experiment=dl3dv_style trainer.num_nodes=1
 ```
 Note: We have trained multiple versions of Stylos on DL3DV. As a result, certain training settings, e.g., loss configurations, may not exactly match those used to produce the released model weights.
+
+### 4. Inference and Evaluation
+To test CO3D-trained Stylos, run the following command,
+```bash
+scripts/sh_files/co3d_3d_loss/inference_frame_stride_3.sh 
+```
+After that, compute consistency metrics and Artscore by running,
+```bash
+scripts/sh_files/co3d_3d_loss/eval_frame_stride_3.sh 
+```
+The implementation of consistency metrics is modified from [StyleGaussian](https://github.com/Kunhao-Liu/StyleGaussian/issues/5#issuecomment-2078576765).
+
+To test DL3DV-trained Stylos, run the following command,
+```bash
+scripts/sh_files/dl3dv2tnt/inference.sh 
+```
+After that, to compute consistency metrics and Artscore of Stylos on each scene by running,
+```bash
+scripts/sh_files/dl3dv2tnt/eval.sh 
+```
 
 ## Quick Inference
 
