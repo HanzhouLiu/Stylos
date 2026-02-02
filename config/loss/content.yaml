@@ -1,0 +1,6 @@
+content:
+  weight: 1.0
+  conf: false
+  mask: false
+  alpha: false
+  use_checkpoint: true

@@ -1,0 +1,4 @@
+style:
+    weight: 1.0
+    use_checkpoint: true
+    loss_type: w2

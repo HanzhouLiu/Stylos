@@ -1,0 +1,6 @@
+adain_style:
+    weight: 1.0
+    style_weight: 10.0
+    content_weight: 1.0
+    mse_weight: 0.0
+    use_checkpoint: True
