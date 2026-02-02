@@ -1,0 +1,129 @@
+# @package _global_
+
+defaults:
+  - /dataset@_group_.co3d: co3d
+  - override /model/encoder: anysplat
+  - override /model/encoder/backbone: croco
+  - override /loss: [mse, depth_consis, lpips] # ablate: opacity loss
+
+wandb:
+  name: co3d_geo_global_base
+  tags: [co3d, 448x448]
+  mode: offline   # offline
+  save_dir: wandb_logs  # log directory
+
+model:
+  encoder:
+    gs_params_head_type: dpt_gs
+    pose_free: true
+    intrinsics_embed_loc: encoder
+    intrinsics_embed_type: token
+    pretrained_weights: ''
+    voxel_size: 0.002
+    pred_pose: true
+    anchor_feat_dim: 128
+    gs_prune: false # ablate: opacity loss
+    pred_head_type: depth
+    freeze_backbone: false
+    distill: true
+    render_conf: false
+    conf_threshold: 0.1
+    freeze_module: None
+    voxelize: true
+    intermediate_layer_idx: [4, 11, 17, 23]
+    gaussian_adapter:
+      sh_degree: 0    
+    use_img_feat: false  # Use image features for style head
+    style_aa_order: [global]
+    shared_patch_embed: true  # Use shared patch embedding for style head
+    style_depth: 12
+    style_intermediate_layer_idx: [2, 5, 8, 11]
+    encode_content: false  # Encode content in style head
+    style_patch_embed: dinov2_vitl14_reg
+    style_fuse_patch_tokens: false
+    style_block_fn: CrossBlock  # Use CrossBlock2 for style head
+    style_aa_block_size: 1
+    style_head_type: base  # base, crossattn
+
+dataset:
+  co3d:
+    input_image_shape: [224, 448]
+    view_sampler:
+      num_context_views: 24  # for dynamic batch sampler, default: 24 on 8 A100s, 24*8=192; 48 on 4 H200s, 48*4=192 
+      num_target_views: 1
+      min_distance_between_context_views: 32
+      max_distance_between_context_views: 256
+      max_img_per_gpu: 24 # keep the same as num_context_views
+    avg_pose: false
+    intr_augment: true
+    normalize_by_pts3d: false
+    rescale_to_1cube: false
+
+optimizer:
+  lr: 2e-4
+  warm_up_steps: 1000
+  backbone_lr_multiplier: 0.1
+
+data_loader:
+  train:
+    batch_size: 1 # not used here
+    
+trainer:
+  max_steps: 15000
+  val_check_interval: 500
+  num_nodes: 1
+  accumulate_grad_batches: 1
+  precision: bf16-mixed
+
+checkpointing:
+  load: null
+  every_n_train_steps: 200
+  save_weights_only: false
+  save_top_k: 5
+  
+train:
+  pose_loss_alpha: 1.0
+  pose_loss_delta: 1.0
+  cxt_depth_weight: 0.0
+  weight_pose: 10.0
+  weight_depth: 1.0
+  weight_normal: 0.0
+  stylization_start_step: 10000 # not used here change train_stage to style
+  train_stage: gs
+
+hydra:
+  run:
+    dir: output/exp_${wandb.name}/${now:%Y-%m-%d_%H-%M-%S}
+
+loss:
+  mse:
+    weight: 1.0
+    conf: false
+  lpips:
+    conf: false
+  depth_consis:
+    weight: 0.1
+    loss_type: MSE
+  # style:
+  #   weight: 1.0
+  #   loss_type: adain
+  #   use_checkpoint: false
+  # content:
+  #   weight: 1.0
+  #   conf: false
+  #   mask: false
+  #   alpha: false
+  #   use_checkpoint: false
+  total_variance:
+    weight: 10.0
+    conf: false
+    mask: false
+    alpha: false
+  adain_style:
+    weight: 1.0
+    style_weight: 1.0
+    content_weight: 0.1
+    mse_weight: 0.0
+    style_loss_type: 3d
+    use_checkpoint: false
+
