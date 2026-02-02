@@ -48,11 +48,8 @@ Note: We have trained multiple versions of Stylos on DL3DV. As a result, certain
 
 ## Quick Inference
 
-For fast testing and inference only, please switch to:
-
-👉 **[`quick_inference`](https://github.com/hanzhouliu/StylOS/tree/quick_inference)**
-
-This branch contains the model weight that is for demo only.
+For demo only, please switch to: 👉 **[`quick_inference`](https://github.com/hanzhouliu/StylOS/tree/quick_inference)**.
+Note, to reproduce results in our paper, please use the `main` branch.
 
 ## Timeline & TODO
 The complete codebase will be **fully released soon**. We appreciate your patience and interest. Thanks for your attention and support! 
