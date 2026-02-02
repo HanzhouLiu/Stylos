@@ -31,13 +31,17 @@
 
 ## Full Instructions
 ### 1. Environment Setup
-`requirements.txt` contains the minimum required packages to train and inference Stylos, which can be installed by running,
+`requirements.txt` contains the minimum required packages to train and inference Stylos, which can be installed by running
 ```bash
 pip install -r requirements.txt
 ```
-
+For cuda-compiled version of RoPE2D, run following command
+```bash
+cd src/model/encoder/backbone/croco/curope
+pip install .
+```
 ### 2. Dataset Preparation
-You might want to change the dataset location in the following config files, `config/dataset/co3d.yaml`, `config/dataset/dl3dv.yaml`, and `config/dataset/dl3dv960.yaml`
+To modify the dataset location, please edit the following config files, [`config/dataset/co3d.yaml`](https://github.com/HanzhouLiu/Stylos/blob/main/config/dataset/co3d.yaml), [`config/dataset/dl3dv.yaml`](https://github.com/HanzhouLiu/Stylos/blob/main/config/dataset/dl3dv.yaml), [`config/dataset/dl3dv960.yaml`](https://github.com/HanzhouLiu/Stylos/blob/main/config/dataset/dl3dv960.yaml).
 
 #### 2.1. CO3D Dataset
 To download the CO3D dataset, run the following command,
@@ -48,13 +52,25 @@ To preprocess the CO3D dataset, run the following command without `--dry_run`,
 ```bash
 python3 -m scripts.python_files.co3d_dataset_preprocess --co3d_root datasets/CO3D --dry_run
 ```
-Note: Since Stylos is based on Anysplat and VGGT, it does not depend on the provided image poses.
+Note: Since Stylos is based on [Anysplat](https://github.com/InternRobotics/AnySplat) and [VGGT](https://github.com/facebookresearch/vggt), it does not require image poses during both training and inference.
 
 #### 2.2. DL3DV Dataset
-Please download the [DL3DV](https://github.com/DL3DV-10K/Dataset) dataset on their official website.
+Please download the [DL3DV](https://github.com/DL3DV-10K/Dataset) dataset from their official website.
 
-### 3. Training
-We first train Stylos on the DL3DV dataset with Jittor color augmentations to learn geometry-related knowledge.
+### 3. Training Guidelines
+Please download the checkpoints from [huggingface link to Stylos](https://huggingface.co/datasets/HanzhouLiu/Stylos) to `checkpoints` in the current workingspace. We use the pre-trained VGG weights for computing losses.
+
+#### 2.1. Train Stylos on CO3D
+We first train Stylos to learn geometry-related knowledge, on 8 NVIDIA H200 GPUs.
+```bash
+python src/main.py +experiment=co3d_geo_global_base trainer.num_nodes=1
+```
+After that, we load the pre-trained Stylos weights obtained from the previous step and further train the model for style learning, on 4 NVIDIA GH200 GPUs.
+```bash
+python src/main.py +experiment=co3d_style_3d_loss_4gpus trainer.num_nodes=1
+```
+#### 2.2. Train Stylos on DL3DV
+We first train Stylos to learn geometry-related knowledge.
 ```bash
 python src/main.py +experiment=dl3dv_geo trainer.num_nodes=1
 ```
@@ -62,10 +78,18 @@ After that, we load the pre-trained Stylos weights obtained from the previous st
 ```bash
 python src/main.py +experiment=dl3dv_style trainer.num_nodes=1
 ```
-Note: We have trained multiple versions of Stylos on DL3DV. As a result, certain training settings, e.g., loss configurations, may not exactly match those used to produce the released model weights.
+Note: We have trained multiple versions of Stylos on DL3DV, and released two of them. Certain training settings, e.g., loss configurations, number of iterations, number of view, and etc., may vary. Please adust the training hyperparamters according to your needs. In the released training codes, only Wikiart is supported as the style reference while DELAUNAY could be added easily.
 
 ### 4. Inference and Evaluation
-To test CO3D-trained Stylos, run the following command,
+#### 4.1. Test Data and Model Checkpoints 
+The 50 test styles are located in [`examples/styles`](https://github.com/HanzhouLiu/Stylos/tree/main/examples/styles). Please copy that folder to the `datasets` directory.
+
+The TNT test scenes are downloadable in [StyleGaussian](https://github.com/Kunhao-Liu/StyleGaussian?tab=readme-ov-file). 
+
+You can download all needed test data and checkpoints in [huggingface link to Stylos](https://huggingface.co/datasets/HanzhouLiu/Stylos).
+
+#### 4.1. Inference
+To reproduce quantitative results of Stylos on CO3D, run the following command,
 ```bash
 scripts/sh_files/co3d_3d_loss/inference_frame_stride_3.sh 
 ```
@@ -75,7 +99,7 @@ scripts/sh_files/co3d_3d_loss/eval_frame_stride_3.sh
 ```
 The implementation of consistency metrics is modified from [StyleGaussian](https://github.com/Kunhao-Liu/StyleGaussian/issues/5#issuecomment-2078576765).
 
-To test DL3DV-trained Stylos, run the following command,
+To reproduce quantitative results of DL3DV-trained Stylos, run the following command,
 ```bash
 scripts/sh_files/dl3dv2tnt/inference.sh 
 ```
@@ -97,8 +121,8 @@ The complete codebase will be **fully released soon**. We appreciate your patien
 - [x] **Jan 2026** — Hugging Face demo released
 - [x] **Jan 2026** — Inference pipeline released  
   (please refer to the [`quick_inference` branch](https://github.com/hanzhouliu/StylOS/tree/quick_inference))
-- [ ] — Release full training code (working on...(:3_ヽ)_)
-- [ ] — Release evaluation instructions and codes
+- [x] **Feb 2026** — Release full training code (still working on double-checking...(:3_ヽ)_)
+- [x] **Feb 2026** — Release evaluation instructions and codes (still working on double-checking...(:3_ヽ)_)
 - [ ] — Paper final version available
 ---
 
