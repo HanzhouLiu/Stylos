@@ -19,7 +19,7 @@
 `requirements.txt` contains the minimum required packages to train and inference Stylos.
 
 ## Dataset Preparation
-You might want to change the dataset config files, `config/dataset/co3d.yaml`, `config/dataset/dl3dv.yaml`, and `config/dataset/dl3dv960.yaml`
+You might want to change the dataset location in the following config files, `config/dataset/co3d.yaml`, `config/dataset/dl3dv.yaml`, and `config/dataset/dl3dv960.yaml`
 
 ## Training Instructions
 We first train Stylos on the DL3DV dataset with Jittor color augmentations to learn geometry-related knowledge.
