@@ -15,6 +15,13 @@
 
 </div>
 
+## Environment Installation
+`requirements.txt` contains the minimum required packages to train and inference Stylos.
+
+## Dataset Preparation
+
+## Dataset Preparation
+
 ## Quick Inference
 
 For fast testing and inference only, please switch to:
