@@ -19,8 +19,18 @@
 `requirements.txt` contains the minimum required packages to train and inference Stylos.
 
 ## Dataset Preparation
+You might want to change the dataset config files, `config/dataset/co3d.yaml`, `config/dataset/dl3dv.yaml`, and `config/dataset/dl3dv960.yaml`
 
-## Dataset Preparation
+## Training Instructions
+We first train Stylos on the DL3DV dataset with Jittor color augmentations to learn geometry-related knowledge.
+```bash
+python src/main.py +experiment=dl3dv_geo trainer.num_nodes=1
+```
+After that, we load the pre-trained Stylos weights obtained from the previous step and further train the model for style learning,
+```bash
+python src/main.py +experiment=dl3dv_style trainer.num_nodes=1
+```
+Note: We have trained multiple versions of Stylos on DL3DV. As a result, certain training settings, e.g., loss configurations, may not exactly match those used to produce the released model weights.
 
 ## Quick Inference
 
@@ -28,11 +38,7 @@ For fast testing and inference only, please switch to:
 
 👉 **[`quick_inference`](https://github.com/hanzhouliu/StylOS/tree/quick_inference)**
 
-This branch contains:
-- Minimal dependencies
-- Pretrained checkpoints
-- Simple inference scripts
-- No training code
+This branch contains the model weight that is for demo only.
 
 ## Timeline & TODO
 The complete codebase will be **fully released soon**. We appreciate your patience and interest. Thanks for your attention and support! 
