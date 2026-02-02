@@ -1,0 +1,6 @@
+name: sequence
+num_context_views: 24
+num_target_views: 1
+max_img_per_gpu: 24
+min_gap: 1
+max_gap: 5

@@ -1,0 +1,6 @@
+{
+  "base_path": "datasets/",
+  "scenes": [
+    "CO3D/donut/34_1472_4748/images"
+  ]
+}
