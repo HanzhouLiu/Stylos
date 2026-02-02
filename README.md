@@ -15,13 +15,13 @@
 
 </div>
 
-## Environment Installation
+## 1. Environment Installation
 `requirements.txt` contains the minimum required packages to train and inference Stylos.
 
-## Dataset Preparation
+## 2. Dataset Preparation
 You might want to change the dataset location in the following config files, `config/dataset/co3d.yaml`, `config/dataset/dl3dv.yaml`, and `config/dataset/dl3dv960.yaml`
 
-CO3D Dataset
+#### 2.1 CO3D Dataset
 To download the CO3D dataset, run the following command,
 ```bash
 bash scripts/sh_files/datasets/download_co3d.sh
@@ -31,6 +31,9 @@ To preprocess the CO3D dataset, run the following command without `--dry_run`,
 python3 -m scripts.python_files.co3d_dataset_preprocess --co3d_root datasets/CO3D --dry_run
 ```
 Note: Since Stylos is based on Anysplat and VGGT, it does not depend on the provided image poses.
+
+#### 2.2 DL3DV Dataset
+Please download the [DL3DV](https://github.com/DL3DV-10K/Dataset) dataset on their official website.
 
 ## Training Instructions
 We first train Stylos on the DL3DV dataset with Jittor color augmentations to learn geometry-related knowledge.
