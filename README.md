@@ -48,7 +48,7 @@ The complete codebase will be **fully released soon**. We appreciate your patien
 - [x] **Jan 2026** — Hugging Face demo released
 - [x] **Jan 2026** — Inference pipeline released  
   (please refer to the [`quick_inference` branch](https://github.com/hanzhouliu/StylOS/tree/quick_inference))
-- [ ] — Release full training code
+- [ ] — Release full training code (working on...(:3_ヽ)_)
 - [ ] — Release evaluation instructions and codes
 - [ ] — Paper final version available
 ---
