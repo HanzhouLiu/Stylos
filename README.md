@@ -24,6 +24,7 @@
     - [CO3D Dataset](#co3d-dataset)
     - [DL3DV Dataset](#dl3dv-dataset)
   - [Inference and Evaluation](#inference-and-evaluation)
+    - [Test Data and Model Checkpoints](#test-data-and-model-checkpoints)
 - [Quick Inference](#quick-inference)
 
 ## Overview
@@ -89,29 +90,33 @@ The TNT test scenes are downloadable in [StyleGaussian](https://github.com/Kunha
 You can download all needed test data and checkpoints in [huggingface link to Stylos](https://huggingface.co/datasets/HanzhouLiu/Stylos).
 
 #### 4.1. Inference
-To reproduce quantitative results of Stylos on CO3D, run the following command,
+To test Stylos on the CO3D dataset using a frame stride of 3, run:
 ```bash
-scripts/sh_files/co3d_3d_loss/inference_frame_stride_3.sh 
+bash scripts/sh_files/co3d_3d_loss/inference_frame_stride_3.sh
 ```
-After that, compute consistency metrics and Artscore by running,
-```bash
-scripts/sh_files/co3d_3d_loss/eval_frame_stride_3.sh 
-```
-The implementation of consistency metrics is modified from [StyleGaussian](https://github.com/Kunhao-Liu/StyleGaussian/issues/5#issuecomment-2078576765).
-
-To reproduce quantitative results of DL3DV-trained Stylos, run the following command,
+To test Stylos on the TNT dataset, run the following command,
 ```bash
 scripts/sh_files/dl3dv2tnt/inference.sh 
 ```
-After that, to compute consistency metrics and Artscore of Stylos on each scene by running,
+
+#### 4.2. Evaluation
+After inference, compute consistency metrics and Artscore on CO3D scenes by running,
+```bash
+scripts/sh_files/co3d_3d_loss/eval_frame_stride_3.sh 
+```
+To compute consistency metrics and Artscore of Stylos on each TNT scene, run,
 ```bash
 scripts/sh_files/dl3dv2tnt/eval.sh 
 ```
+The implementation of consistency metrics is modified from [StyleGaussian](https://github.com/Kunhao-Liu/StyleGaussian/issues/5#issuecomment-2078576765).
+
+#### 4.3. Comparison with SOTA Methods
+We reproduce or directly evaluate several 3D stylization models, which include [StyleGaussian](https://github.com/Kunhao-Liu/StyleGaussian/issues/5#issuecomment-2078576765), [G-Style](https://github.com/AronKovacs/g-style), [SGSST](https://github.com/JianlingWANG2021/SGSST), [StyleGaussian](https://github.com/Kunhao-Liu/StyleGaussian), and [Styl3R](https://github.com/WU-CVGL/Styl3R). We sincerely appreciate their open-source contributions to the 3D stylization community. The visual results are available at the following link, [huggingface link to SOTA comparisons](https://huggingface.co/datasets/HanzhouLiu/Stylos/tree/main/sota_comparisons).
 
 ## Quick Inference
 
-For demo only, please switch to: 👉 **[`quick_inference`](https://github.com/hanzhouliu/StylOS/tree/quick_inference)**.
-Note, to reproduce results in our paper, please use the `main` branch.
+For demo only, please switch to **[`quick_inference`](https://github.com/hanzhouliu/StylOS/tree/quick_inference)** branch.
+To reproduce results in our paper, please use the **[`main`](https://github.com/HanzhouLiu/Stylos/tree/main)** branch.
 
 ## Timeline & TODO
 The complete codebase will be **fully released soon**. We appreciate your patience and interest. Thanks for your attention and support! 
@@ -123,6 +128,7 @@ The complete codebase will be **fully released soon**. We appreciate your patien
   (please refer to the [`quick_inference` branch](https://github.com/hanzhouliu/StylOS/tree/quick_inference))
 - [x] **Feb 2026** — Release full training code (still working on double-checking...(:3_ヽ)_)
 - [x] **Feb 2026** — Release evaluation instructions and codes (still working on double-checking...(:3_ヽ)_)
+- [x] **Feb 2026** — Release comparison results with state-of-the-art models
 - [ ] — Paper final version available
 ---
 
