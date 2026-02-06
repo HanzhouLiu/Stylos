@@ -19,12 +19,18 @@
 
 - [Overview](#overview)
 - [Full Instructions](#full-instructions)
-  - [Environment Setup](#environment-setup)
-  - [Dataset Preparation](#dataset-preparation)
-    - [CO3D Dataset](#co3d-dataset)
-    - [DL3DV Dataset](#dl3dv-dataset)
-  - [Inference and Evaluation](#inference-and-evaluation)
-    - [Test Data and Model Checkpoints](#test-data-and-model-checkpoints)
+  - [Environment Setup](#1-environment-setup)
+  - [Dataset Preparation](#2-dataset-preparation)
+    - [CO3D Dataset](#21-co3d-dataset)
+    - [DL3DV Dataset](#22-dl3dv-dataset)
+  - [Training Guidelines](#3-training-guidelines)
+    - [Train Stylos on CO3D](#31-train-stylos-on-co3d)
+    - [Train Stylos on DL3DV](#32-train-stylos-on-dl3dv)
+  - [Inference and Evaluation](#4-inference-and-evaluation)
+    - [Test Data and Model Checkpoints](#41-test-data-and-model-checkpoints)
+    - [Inference](#42-inference)
+    - [Evaluation](#43-evaluation)
+    - [Comparison with SOTA Methods](#44-comparison-with-sota-methods)
 - [Quick Inference](#quick-inference)
 
 ## Overview
@@ -61,7 +67,7 @@ Please download the [DL3DV](https://github.com/DL3DV-10K/Dataset) dataset from t
 ### 3. Training Guidelines
 Please download the checkpoints from [huggingface link to Stylos](https://huggingface.co/datasets/HanzhouLiu/Stylos) to `checkpoints` in the current workingspace. We use the pre-trained VGG weights for computing losses.
 
-#### 2.1. Train Stylos on CO3D
+#### 3.1. Train Stylos on CO3D
 We first train Stylos to learn geometry-related knowledge, on 8 NVIDIA H200 GPUs.
 ```bash
 python src/main.py +experiment=co3d_geo_global_base trainer.num_nodes=1
@@ -70,7 +76,7 @@ After that, we load the pre-trained Stylos weights obtained from the previous st
 ```bash
 python src/main.py +experiment=co3d_style_3d_loss_4gpus trainer.num_nodes=1
 ```
-#### 2.2. Train Stylos on DL3DV
+#### 3.2. Train Stylos on DL3DV
 We first train Stylos to learn geometry-related knowledge.
 ```bash
 python src/main.py +experiment=dl3dv_geo trainer.num_nodes=1
@@ -89,7 +95,7 @@ The TNT test scenes are downloadable in [StyleGaussian](https://github.com/Kunha
 
 You can download all needed test data and checkpoints in [huggingface link to Stylos](https://huggingface.co/datasets/HanzhouLiu/Stylos).
 
-#### 4.1. Inference
+#### 4.2. Inference
 To test Stylos on the CO3D dataset using a frame stride of 3, run:
 ```bash
 bash scripts/sh_files/co3d_3d_loss/inference_frame_stride_3.sh
@@ -99,7 +105,7 @@ To test Stylos on the TNT dataset, run the following command,
 scripts/sh_files/dl3dv2tnt/inference.sh 
 ```
 
-#### 4.2. Evaluation
+#### 4.3. Evaluation
 After inference, compute consistency metrics and Artscore on CO3D scenes by running,
 ```bash
 scripts/sh_files/co3d_3d_loss/eval_frame_stride_3.sh 
@@ -110,7 +116,7 @@ scripts/sh_files/dl3dv2tnt/eval.sh
 ```
 The implementation of consistency metrics is modified from [StyleGaussian](https://github.com/Kunhao-Liu/StyleGaussian/issues/5#issuecomment-2078576765).
 
-#### 4.3. Comparison with SOTA Methods
+#### 4.4. Comparison with SOTA Methods
 We reproduce or directly evaluate several 3D stylization models, which include [StyleGaussian](https://github.com/Kunhao-Liu/StyleGaussian/issues/5#issuecomment-2078576765), [G-Style](https://github.com/AronKovacs/g-style), [SGSST](https://github.com/JianlingWANG2021/SGSST), [StyleGaussian](https://github.com/Kunhao-Liu/StyleGaussian), and [Styl3R](https://github.com/WU-CVGL/Styl3R). We sincerely appreciate their open-source contributions to the 3D stylization community. The visual results are available at the following link, [huggingface link to SOTA comparisons](https://huggingface.co/datasets/HanzhouLiu/Stylos/tree/main/sota_comparisons).
 
 ## Quick Inference
