@@ -80,7 +80,8 @@ class DatasetDL3DV(Dataset):
         self.stage = stage
         self.view_sampler = view_sampler
         self.to_tensor = tf.ToTensor()
-        self.wikiart_ds = load_dataset("Artificio/WikiArt", split="train")#load_dataset("huggan/wikiart", split="train")
+        # self.wikiart_ds = load_dataset("Artificio/WikiArt", split="train")#load_dataset("huggan/wikiart", split="train")
+        self.wikiart_ds = load_dataset("Artificio/WikiArt", split="train", cache_dir='datasets')  # change the cache_dir
         self.style_transform = style_transform()
         # load data
         self.data_root = cfg.roots[0]
@@ -145,6 +146,7 @@ class DatasetDL3DV(Dataset):
         self.scene_ids = {}
         self.scenes = {}
         index = 0
+        """
         with ThreadPoolExecutor(max_workers=32) as executor:
             futures = [executor.submit(self.load_jsons, scene_path) for scene_path in self.data_list]
             for future in as_completed(futures):
@@ -153,6 +155,31 @@ class DatasetDL3DV(Dataset):
                 self.scene_ids[index] = scene_id
                 index += 1
         print(f"DL3DV: {self.stage}: loaded {len(self.scene_ids)} scenes")
+        """
+        with ThreadPoolExecutor(max_workers=32) as executor:
+            futures = [executor.submit(self.load_jsons, scene_path) for scene_path in self.data_list]
+            for future in as_completed(futures):
+                try:
+                    scene_frames, scene_id = future.result()
+                except FileNotFoundError as e:
+                    print(f"[DL3DV] Skip scene (missing transforms.json): {e}")
+                    continue
+                except json.JSONDecodeError as e:
+                    print(f"[DL3DV] Skip scene (bad transforms.json): {e}")
+                    continue
+                except Exception as e:
+                    print(f"[DL3DV] Skip scene (other error): {e}")
+                    continue
+
+                if scene_id is None or scene_frames is None:
+                    continue
+
+                self.scenes[scene_id] = scene_frames
+                self.scene_ids[index] = scene_id
+                index += 1
+
+        print(f"DL3DV: {self.stage}: loaded {len(self.scene_ids)} scenes")
+
 
         # new_scene_ids = {}
         # new_scenes = {}
