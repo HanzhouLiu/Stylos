@@ -79,7 +79,7 @@ trainer:
   gradient_clip_val: 1
 
 checkpointing:
-  load: output/exp_styledl3dv_geo/2025-08-14_09-22-10/checkpoints/epoch_51-step_11800.ckpt
+  load: output/epoch_30-step_15000.ckpt
   every_n_train_steps: 200
   save_weights_only: false
   save_top_k: 5
