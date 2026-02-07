@@ -11,7 +11,7 @@
 # =================================================
 
 # Path to pretrained checkpoint
-CHECKPOINT="output/released_version/exp_co3d_style_scene_loss_4gpus/2025-09-20_16-18-24/hf_checkpoints/step_015000"
+CHECKPOINT="output/exp_co3d_style_scene_loss_4gpus/2025-09-20_16-18-24/hf_checkpoints/step_015000"
 
 # Experiment name (used in output directory)
 EXP_NAME="exp_scn_loss"

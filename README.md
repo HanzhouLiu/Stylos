@@ -91,9 +91,10 @@ Note: We have trained multiple versions of Stylos on DL3DV, and released two of 
 #### 4.1. Test Data and Model Checkpoints 
 The 50 test styles are located in [`examples/styles`](https://github.com/HanzhouLiu/Stylos/tree/main/examples/styles). Please copy that folder to the `datasets` directory.
 
-The TNT test scenes are downloadable in [StyleGaussian](https://github.com/Kunhao-Liu/StyleGaussian?tab=readme-ov-file). 
+Download all needed test data and checkpoints in [huggingface link to Stylos](https://huggingface.co/datasets/HanzhouLiu/Stylos).
 
-You can download all needed test data and checkpoints in [huggingface link to Stylos](https://huggingface.co/datasets/HanzhouLiu/Stylos).
+Please use the [`output/exp_dl3dv_old`](https://huggingface.co/datasets/HanzhouLiu/Stylos/tree/main/output/exp_dl3dv_old). checkpoint to reproduce the quantative results of Stylos in the paper.
+
 
 #### 4.2. Inference
 To test Stylos on the CO3D dataset using a frame stride of 3, run:
