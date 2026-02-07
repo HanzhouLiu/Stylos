@@ -3,7 +3,7 @@ defaults:
   - view_sampler: sequence
 
 name: dl3dv
-roots: [/workspace/Data/DL3DV-10K-480P]
+roots: [datasets/DL3DV/DL3DV_ALL_480P]
 
 input_image_shape: [256, 256]
 original_image_shape: [270, 480]
