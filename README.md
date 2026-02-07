@@ -134,7 +134,7 @@ The complete codebase will be **fully released soon**. We appreciate your patien
 - [x] **Jan 2026** — Inference pipeline released  
   (please refer to the [`quick_inference` branch](https://github.com/hanzhouliu/StylOS/tree/quick_inference))
 - [x] **Feb 2026** — Release full training code (still working on double-checking...(:3_ヽ)_)
-- [x] **Feb 2026** — Release evaluation instructions and codes (still working on double-checking...(:3_ヽ)_)
+- [x] **Feb 2026** — Release evaluation instructions and codes
 - [x] **Feb 2026** — Release comparison results with state-of-the-art models
 - [ ] — Paper final version available
 ---
