@@ -136,7 +136,7 @@ The complete codebase will be **fully released soon**. We appreciate your patien
 - [x] **Feb 2026** — Full training code released
 - [x] **Feb 2026** — Evaluation codes released
 - [x] **Feb 2026** — Comparison results released
-- [ ] **Feb 2026** — Paper final version available (Working on...)
+- [x] **Feb 2026** — Paper final version available
 ---
 
 ⭐ If you find this project useful, please **give us a star** to help more people discover it.  
